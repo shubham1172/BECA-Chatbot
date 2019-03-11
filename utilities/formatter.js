@@ -11,9 +11,9 @@ exports.format_search = (data) => {
                 }
             ],
             "suggestions": [
-                {
-                    "title": "Show me more"
-                }
+                { "title": "Show me more" },
+                { "title": "First one" },
+                { "title": "Show second" }
             ],
         },
         "systemIntent": {
