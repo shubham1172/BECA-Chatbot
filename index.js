@@ -12,7 +12,8 @@ cache = { data: null, id_list: null, curr_pos: 0 }
 
 async function get_product(idx, agent) {
     id = cache.id_list[idx]
-    console.log(idx); console.log(id)
+    console.log(idx);
+    console.log(id);
     return api_client.fetch_product(id)
         .then((data) => {
             formatted = formatter.format_product(data)
@@ -92,10 +93,12 @@ async function get_product(idx, agent) {
         }
 
         function fallback(agent) {
+            console.log("test fallback");
             query = req.body.queryResult.queryText.trim()
             if (isNaN(query.split(".")[0]))
                 return
-            idx = Number(query.split(".")[0]) - 1
+            idx = cahce.curr_pos % 4 + Number(query.split(".")[0]) - 1
+            console.log(idx);
             return get_product(idx, agent)
         }
 
